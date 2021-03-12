@@ -7,7 +7,7 @@ const Users = () => {
 
   const fetchData = async () => {
      try{
- const resp = await fetch("http://jsonplaceholder.typicode.com/users");
+ const resp = await fetch("https://jsonplaceholder.typicode.com/users");
     const respData = await resp.json();
 
     setData(respData);
@@ -17,6 +17,7 @@ const Users = () => {
        let collection = localStorage.getItem("users");
        setData(JSON.parse(collection));
        setMode("offline");
+       
    
      }
    
@@ -26,7 +27,7 @@ const Users = () => {
     fetchData();
   }, []);
 
-  return (
+   return (
  
  <div>
   {mode === "offline" && <div className="alert alert-warning" role="alert">You are in offline mode some issue with connection!</div>}
@@ -42,7 +43,7 @@ const Users = () => {
   <tbody>
 
     
-    {data.map((item)=>(
+    {data?.map((item)=>(
 
     <tr>
       <td>{item.id}</td>
